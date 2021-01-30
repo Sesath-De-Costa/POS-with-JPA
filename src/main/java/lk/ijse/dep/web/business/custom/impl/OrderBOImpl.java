@@ -13,7 +13,6 @@ import lk.ijse.dep.web.entity.Order;
 import lk.ijse.dep.web.entity.OrderDetail;
 
 import javax.persistence.EntityManager;
-import java.sql.Connection;
 import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,11 +30,6 @@ public class OrderBOImpl implements OrderBO {
     orderDetailDAO = DAOFactory.getInstance().getDAO(DAOTypes.ORDER_DETAIL);
     itemDAO = DAOFactory.getInstance().getDAO(DAOTypes.ITEM);
     customerDAO = DAOFactory.getInstance().getDAO(DAOTypes.CUSTOMER);
-  }
-  @Override
-  public void setConnection(Connection connection) throws Exception {
-    this.connection = connection;
-    customerDAO.setConnection(connection);
   }
 
   @Override
