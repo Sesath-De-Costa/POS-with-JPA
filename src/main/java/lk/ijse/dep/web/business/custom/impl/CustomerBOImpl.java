@@ -22,12 +22,6 @@ public class CustomerBOImpl implements CustomerBO {
   }
 
   @Override
-  public void setConnection(Connection connection) throws Exception {
-    this.connection = connection;
-    customerDAO.setConnection(connection);
-  }
-
-  @Override
   public void setEntityManager(EntityManager entityManager) throws Exception {
     this.em = entityManager;
     customerDAO.setEntityManager(entityManager);
