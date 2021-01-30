@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 @WebServlet(urlPatterns = "/api/v1/orders")
@@ -38,8 +37,7 @@ public class OrderServlet extends HttpServlet {
     Jsonb jsonb = JsonbBuilder.create();
     final EntityManagerFactory emf = (EntityManagerFactory) getServletContext().getAttribute("sf");
 
-
-    try (Connection connection = cp.getConnection()){
+    try {
       EntityManager em = emf.createEntityManager();
       OrderDTO dto = jsonb.fromJson(req.getReader(), OrderDTO.class);
 
