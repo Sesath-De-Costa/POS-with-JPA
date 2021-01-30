@@ -18,7 +18,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 @WebServlet(urlPatterns = "/api/v1/items/*")
@@ -37,7 +36,7 @@ public class ItemServlet extends HttpServlet {
   protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     final EntityManagerFactory emf = (EntityManagerFactory) getServletContext().getAttribute("sf");
 
-    try (Connection connection = cp.getConnection()){
+    try {
       EntityManager em = emf.createEntityManager();
 
       if (req.getPathInfo() == null || req.getPathInfo().replace("/", "").trim().isEmpty()) {
