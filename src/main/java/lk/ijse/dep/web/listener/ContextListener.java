@@ -67,13 +67,5 @@ public class ContextListener implements ServletContextListener {
     EntityManagerFactory emf = (EntityManagerFactory) sce.getServletContext().getAttribute("emf");
     emf.close();
     logger.info("Session factory is being shut down");
-
-    BasicDataSource bds = (BasicDataSource) sce.getServletContext().getAttribute("cp");
-    try {
-      bds.close();
-      System.out.println("Connection pool is closed...!");
-    } catch (SQLException throwables) {
-      logger.error("Failed to close the connection pool", throwables);
-    }
   }
 }
