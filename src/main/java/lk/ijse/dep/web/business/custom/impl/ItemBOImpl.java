@@ -8,7 +8,6 @@ import lk.ijse.dep.web.dto.ItemDTO;
 import lk.ijse.dep.web.entity.Item;
 
 import javax.persistence.EntityManager;
-import java.sql.Connection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,12 +18,6 @@ public class ItemBOImpl implements ItemBO {
 
   public ItemBOImpl() {
     itemDAO = DAOFactory.getInstance().getDAO(DAOTypes.ITEM);
-  }
-
-  @Override
-  public void setConnection(Connection connection) throws Exception {
-    this.connection = connection;
-    customerDAO.setConnection(connection);
   }
 
   @Override
